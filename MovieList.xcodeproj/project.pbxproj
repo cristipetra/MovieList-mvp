@@ -13,6 +13,15 @@
 		0805F7FA270D79A8004FC83F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0805F7F8270D79A8004FC83F /* Main.storyboard */; };
 		0805F7FC270D79AB004FC83F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0805F7FB270D79AB004FC83F /* Assets.xcassets */; };
 		0805F7FF270D79AB004FC83F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0805F7FD270D79AB004FC83F /* LaunchScreen.storyboard */; };
+		08B3D768271193D900851C68 /* FavoritesMovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B3D767271193D900851C68 /* FavoritesMovieViewController.swift */; };
+		08B3D76B2711948F00851C68 /* RootFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B3D76A2711948F00851C68 /* RootFlowCoordinator.swift */; };
+		08B3D76E271195A000851C68 /* Storyboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B3D76D271195A000851C68 /* Storyboards.swift */; };
+		08B3D770271198A900851C68 /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B3D76F271198A900851C68 /* FavoritesViewModel.swift */; };
+		08B3D7722711A45000851C68 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B3D7712711A45000851C68 /* SearchViewController.swift */; };
+		08B3D7742711A5CB00851C68 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B3D7732711A5CB00851C68 /* SearchViewModel.swift */; };
+		08B5B90E2713492200E51FC3 /* FavoritesCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08B5B90D2713492200E51FC3 /* FavoritesCellView.xib */; };
+		08E13A07271022F2001711F9 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E13A06271022F2001711F9 /* App.swift */; };
+		08E13A0A27102DCA001711F9 /* Model in Frameworks */ = {isa = PBXBuildFile; productRef = 08E13A0927102DCA001711F9 /* Model */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +33,15 @@
 		0805F7FB270D79AB004FC83F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0805F7FE270D79AB004FC83F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0805F800270D79AB004FC83F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0805F808270D918B004FC83F /* Model */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Model; sourceTree = "<group>"; };
+		08B3D767271193D900851C68 /* FavoritesMovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesMovieViewController.swift; sourceTree = "<group>"; };
+		08B3D76A2711948F00851C68 /* RootFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootFlowCoordinator.swift; sourceTree = "<group>"; };
+		08B3D76D271195A000851C68 /* Storyboards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboards.swift; sourceTree = "<group>"; };
+		08B3D76F271198A900851C68 /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
+		08B3D7712711A45000851C68 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		08B3D7732711A5CB00851C68 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		08B5B90D2713492200E51FC3 /* FavoritesCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoritesCellView.xib; sourceTree = "<group>"; };
+		08E13A06271022F2001711F9 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08E13A0A27102DCA001711F9 /* Model in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +61,7 @@
 			children = (
 				0805F7F1270D79A8004FC83F /* MovieList */,
 				0805F7F0270D79A8004FC83F /* Products */,
+				08E13A0827102DCA001711F9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +76,79 @@
 		0805F7F1270D79A8004FC83F /* MovieList */ = {
 			isa = PBXGroup;
 			children = (
+				08B3D76C2711958900851C68 /* Storyboards */,
+				08B3D7692711946900851C68 /* FlowCoordinators */,
+				08B3D7662711933100851C68 /* View */,
+				08B3D7652711932500851C68 /* ViewModel */,
+				08E13A05271022E3001711F9 /* Utils */,
+				0805F808270D918B004FC83F /* Model */,
 				0805F7F2270D79A8004FC83F /* AppDelegate.swift */,
 				0805F7F4270D79A8004FC83F /* SceneDelegate.swift */,
 				0805F7F6270D79A8004FC83F /* ViewController.swift */,
-				0805F7F8270D79A8004FC83F /* Main.storyboard */,
 				0805F7FB270D79AB004FC83F /* Assets.xcassets */,
-				0805F7FD270D79AB004FC83F /* LaunchScreen.storyboard */,
 				0805F800270D79AB004FC83F /* Info.plist */,
 			);
 			path = MovieList;
+			sourceTree = "<group>";
+		};
+		08B3D7652711932500851C68 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				08B3D76F271198A900851C68 /* FavoritesViewModel.swift */,
+				08B3D7732711A5CB00851C68 /* SearchViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		08B3D7662711933100851C68 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				08B5B90C271348F800E51FC3 /* Cells */,
+				08B3D767271193D900851C68 /* FavoritesMovieViewController.swift */,
+				08B3D7712711A45000851C68 /* SearchViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		08B3D7692711946900851C68 /* FlowCoordinators */ = {
+			isa = PBXGroup;
+			children = (
+				08B3D76A2711948F00851C68 /* RootFlowCoordinator.swift */,
+			);
+			path = FlowCoordinators;
+			sourceTree = "<group>";
+		};
+		08B3D76C2711958900851C68 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				0805F7FD270D79AB004FC83F /* LaunchScreen.storyboard */,
+				0805F7F8270D79A8004FC83F /* Main.storyboard */,
+				08B3D76D271195A000851C68 /* Storyboards.swift */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		08B5B90C271348F800E51FC3 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				08B5B90D2713492200E51FC3 /* FavoritesCellView.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		08E13A05271022E3001711F9 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				08E13A06271022F2001711F9 /* App.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		08E13A0827102DCA001711F9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +167,9 @@
 			dependencies = (
 			);
 			name = MovieList;
+			packageProductDependencies = (
+				08E13A0927102DCA001711F9 /* Model */,
+			);
 			productName = MovieList;
 			productReference = 0805F7EF270D79A8004FC83F /* MovieList.app */;
 			productType = "com.apple.product-type.application";
@@ -125,6 +212,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08B5B90E2713492200E51FC3 /* FavoritesCellView.xib in Resources */,
 				0805F7FF270D79AB004FC83F /* LaunchScreen.storyboard in Resources */,
 				0805F7FC270D79AB004FC83F /* Assets.xcassets in Resources */,
 				0805F7FA270D79A8004FC83F /* Main.storyboard in Resources */,
@@ -138,9 +226,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08B3D76B2711948F00851C68 /* RootFlowCoordinator.swift in Sources */,
+				08B3D768271193D900851C68 /* FavoritesMovieViewController.swift in Sources */,
+				08B3D770271198A900851C68 /* FavoritesViewModel.swift in Sources */,
+				08B3D7722711A45000851C68 /* SearchViewController.swift in Sources */,
 				0805F7F7270D79A8004FC83F /* ViewController.swift in Sources */,
+				08E13A07271022F2001711F9 /* App.swift in Sources */,
+				08B3D7742711A5CB00851C68 /* SearchViewModel.swift in Sources */,
 				0805F7F3270D79A8004FC83F /* AppDelegate.swift in Sources */,
 				0805F7F5270D79A8004FC83F /* SceneDelegate.swift in Sources */,
+				08B3D76E271195A000851C68 /* Storyboards.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,6 +453,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		08E13A0927102DCA001711F9 /* Model */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Model;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0805F7E7270D79A8004FC83F /* Project object */;
 }

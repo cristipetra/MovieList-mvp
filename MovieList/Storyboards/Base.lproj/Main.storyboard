@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MovieList" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="72" y="64"/>
+        </scene>
+        <!--Search View Controller-->
+        <scene sceneID="WlJ-h6-9LJ">
+            <objects>
+                <viewController storyboardIdentifier="search" id="9K0-a4-NFK" customClass="SearchViewController" customModule="MovieList" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="y5f-2s-cHB">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" placeholder="Search movies" translatesAutoresizingMaskIntoConstraints="NO" id="UfQ-mJ-7VW">
+                                <rect key="frame" x="0.0" y="64" width="414" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="ZR2-Jt-3U0"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="1Vg-QR-PgZ">
+                                <rect key="frame" x="15" y="164" width="384" height="698"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="307-ca-YM0"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="UfQ-mJ-7VW" firstAttribute="trailing" secondItem="307-ca-YM0" secondAttribute="trailing" id="62J-dA-1H2"/>
+                            <constraint firstItem="307-ca-YM0" firstAttribute="bottom" secondItem="1Vg-QR-PgZ" secondAttribute="bottom" id="6S6-90-XWA"/>
+                            <constraint firstItem="UfQ-mJ-7VW" firstAttribute="top" secondItem="307-ca-YM0" secondAttribute="top" constant="20" id="9qa-dl-Jh5"/>
+                            <constraint firstItem="1Vg-QR-PgZ" firstAttribute="leading" secondItem="307-ca-YM0" secondAttribute="leading" constant="15" id="gju-5i-STQ"/>
+                            <constraint firstItem="UfQ-mJ-7VW" firstAttribute="leading" secondItem="307-ca-YM0" secondAttribute="leading" id="lCP-hR-9p7"/>
+                            <constraint firstItem="307-ca-YM0" firstAttribute="trailing" secondItem="1Vg-QR-PgZ" secondAttribute="trailing" constant="15" id="o40-mh-BpZ"/>
+                            <constraint firstItem="1Vg-QR-PgZ" firstAttribute="top" secondItem="UfQ-mJ-7VW" secondAttribute="bottom" constant="20" id="v9I-oc-lUw"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="searchBarMovie" destination="UfQ-mJ-7VW" id="eUp-s8-eo2"/>
+                        <outlet property="tableView" destination="1Vg-QR-PgZ" id="9uX-9s-Sy5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y4c-KT-23Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1033" y="24"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="fgW-yb-Cuw">
+            <objects>
+                <viewController storyboardIdentifier="root" id="tvj-cC-vzY" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2SO-Zt-32b">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="a8o-NB-5RM"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rbS-36-Rdp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1935" y="76"/>
+        </scene>
+        <!--Favorites Movie View Controller-->
+        <scene sceneID="Tok-wc-Pur">
+            <objects>
+                <viewController storyboardIdentifier="favorites" id="Fg7-MM-DIH" customClass="FavoritesMovieViewController" customModule="MovieList" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0MS-0l-TFi">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Ure-DV-4Y0"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Db2-ay-Ysp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-838" y="64"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
