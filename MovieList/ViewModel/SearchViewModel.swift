@@ -12,7 +12,7 @@ import Model
 protocol SearchViewModelContract {
     var title: String { get }
     var movies: [Movie] { set get }
-    //var searchBarDidChanged: String
+    
     func didSearchBarChanged(text: String)
     
     var onChangedMovies: DoneHandler? { set get }
@@ -25,11 +25,7 @@ protocol SearchViewModelContract {
 
 class SearchViewModel: SearchViewModelContract {
     var title: String { return "Search" }
-    
-    func didSearchBarChanged(text: String) {
-        searchText = text
-    }
-    
+        
     @Published var movies: [Movie] = []
     @Published var searchText: String = ""
     
@@ -53,7 +49,6 @@ class SearchViewModel: SearchViewModelContract {
     }
     
     func addListener() {
-        
         hiddenMovies = storageProvider.getHiddenMovies()
         
         $searchText
@@ -68,6 +63,10 @@ class SearchViewModel: SearchViewModelContract {
                 
             }
             .store(in: &cancelables)
+    }
+    
+    func didSearchBarChanged(text: String) {
+        searchText = text
     }
     
     func searchMovies(title: String) {

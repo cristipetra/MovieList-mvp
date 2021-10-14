@@ -31,6 +31,7 @@
 		08B5B91727135DAC00E51FC3 /* MovieDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B5B91627135DAC00E51FC3 /* MovieDetailViewModel.swift */; };
 		08E13A07271022F2001711F9 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E13A06271022F2001711F9 /* App.swift */; };
 		08E13A0A27102DCA001711F9 /* Model in Frameworks */ = {isa = PBXBuildFile; productRef = 08E13A0927102DCA001711F9 /* Model */; };
+		08E65F4C271805DE009D2884 /* MovieMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E65F4B271805DE009D2884 /* MovieMapper.swift */; };
 		08F220EC271706D70084D66F /* PlaceholderStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F220EB271706D70084D66F /* PlaceholderStatus.swift */; };
 		08F220EE27170BD80084D66F /* PlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F220ED27170BD80084D66F /* PlaceholderView.swift */; };
 		08F220F027170E5D0084D66F /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F220EF27170E5D0084D66F /* UIViewController+Extension.swift */; };
@@ -62,6 +63,7 @@
 		08B5B9142713584A00E51FC3 /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 		08B5B91627135DAC00E51FC3 /* MovieDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewModel.swift; sourceTree = "<group>"; };
 		08E13A06271022F2001711F9 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		08E65F4B271805DE009D2884 /* MovieMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieMapper.swift; sourceTree = "<group>"; };
 		08F220EB271706D70084D66F /* PlaceholderStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderStatus.swift; sourceTree = "<group>"; };
 		08F220ED27170BD80084D66F /* PlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderView.swift; sourceTree = "<group>"; };
 		08F220EF27170E5D0084D66F /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 				08E13A06271022F2001711F9 /* App.swift */,
 				080092EF2715F87B00D41CB6 /* UIImageView+Extension.swift */,
 				08F220EF27170E5D0084D66F /* UIViewController+Extension.swift */,
+				08E65F4B271805DE009D2884 /* MovieMapper.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 				08B3D7742711A5CB00851C68 /* SearchViewModel.swift in Sources */,
 				083E03212714945E00C3867B /* MovieCoreData.xcdatamodeld in Sources */,
 				0805F7F3270D79A8004FC83F /* AppDelegate.swift in Sources */,
+				08E65F4C271805DE009D2884 /* MovieMapper.swift in Sources */,
 				0805F7F5270D79A8004FC83F /* SceneDelegate.swift in Sources */,
 				08B3D76E271195A000851C68 /* Storyboards.swift in Sources */,
 			);

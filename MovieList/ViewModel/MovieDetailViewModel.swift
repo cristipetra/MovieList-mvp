@@ -53,6 +53,7 @@ class MovieDetailViewModel: MovieDetailViewModelContract {
         
         storageProvider.saveMovie(movie: movie) {
             self.onSavedMovie?()
+            self.isEnabledAdd.send(false)
             self.onMessage?("Movie successfully added.")
         }
     }
