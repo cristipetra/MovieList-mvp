@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-final class CoreService {
+public final class CoreService {
     static let shared: CoreService = CoreService()
     
     static let apiVer: String = "/3"
@@ -16,6 +16,8 @@ final class CoreService {
     func baseURL() -> String {
         "https://api.themoviedb.org"
     }
+    
+    public static let imageBaseStr: String = "https://image.tmdb.org/t/p/w500"
 }
 
 

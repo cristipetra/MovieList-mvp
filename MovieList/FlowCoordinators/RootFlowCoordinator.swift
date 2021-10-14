@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Model
 
 typealias DoneHandler = (() -> Void)
 
@@ -44,8 +45,25 @@ final class RootFlowCoordinator: FlowCoordinator {
         let searchVC: SearchViewController = UIStoryboard.main.searchScreen()
         let searchViewModel = SearchViewModel()
         searchVC.viewModel = searchViewModel
+                
+        searchViewModel.didSelectMovie = { movie in
+            
+            self.presentDetailScreen(movie: movie)
+        }
         
         self.navigation.pushViewController(searchVC, animated: true)
+    }
+    
+    private func presentDetailScreen(movie: Movie) {
+        let movieDetailVC: MovieDetailViewController = UIStoryboard.main.detailScreen()
+        let movieDetailViewModel = MovieDetailViewModel(movie: movie)
+        
+        movieDetailVC.viewModel = movieDetailViewModel
+        movieDetailViewModel.onSavedMovie = {
+            self.favoritesViewModel.fetchMovies()
+        }
+        
+        self.navigation.pushViewController(movieDetailVC, animated: true)
     }
     
     func present() {

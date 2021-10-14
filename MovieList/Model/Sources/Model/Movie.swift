@@ -8,18 +8,19 @@
 import Foundation
 
 public struct Movie: Codable {
-    let adult: Bool
-    let backdropPath: String?
-    let genreIDS: [Int]
-    let id: Int
+    public let adult: Bool
+    public let backdropPath: String?
+    public let genreIDS: [Int]
+    public let id: Int
     //let originalLanguage: OriginalLanguage
-    let originalTitle, overview: String
-    let popularity: Double
-    let posterPath: String?
-    let releaseDate, title: String
-    let video: Bool
-    let voteAverage: Double
-    let voteCount: Int
+    public let originalTitle, overview: String
+    public let popularity: Double
+    public let posterPath: String?
+    //public let releaseDate
+    public let title: String
+    public let video: Bool
+    public let voteAverage: Double
+    public let voteCount: Int
     
     enum CodingKeys: String, CodingKey {
         case adult
@@ -30,10 +31,15 @@ public struct Movie: Codable {
         case originalTitle = "original_title"
         case overview, popularity
         case posterPath = "poster_path"
-        case releaseDate = "release_date"
+        //case releaseDate = "release_date"
         case title, video
         case voteAverage = "vote_average"
         case voteCount = "vote_count"
+    }
+    
+    public var image: URL? {
+        guard let posterPath = posterPath else { return nil }
+        return URL(string: CoreService.imageBaseStr + posterPath)!
     }
 }
 

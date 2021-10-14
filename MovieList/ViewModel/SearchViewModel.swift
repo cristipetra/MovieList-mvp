@@ -14,6 +14,13 @@ protocol SearchViewModelContract {
     var movies: [Movie] { set get }
     //var searchBarDidChanged: String
     func didSearchBarChanged(text: String)
+    
+    var onChangedMovies: DoneHandler? { set get }
+    var didSelectItem: DoneHandler? { set get }
+    var didSelectMovie: ((Movie) -> Void)? { set get }
+    
+    var isLoading: PassthroughSubject<Bool, Never> { set get }
+    var placeholder: CurrentValueSubject<PlaceholderStatus?, Never> { set get }
 }
 
 class SearchViewModel: SearchViewModelContract {
@@ -25,8 +32,18 @@ class SearchViewModel: SearchViewModelContract {
     
     @Published var movies: [Movie] = []
     @Published var searchText: String = ""
+    
+    var hiddenMovies: [MovieCoreData] = []
+    let storageProvider = StorageProvider()
+    
+    var isLoading: PassthroughSubject<Bool, Never> = .init()
+    var placeholder: CurrentValueSubject<PlaceholderStatus?, Never> = .init(nil)
+    
     private var cancelables: Set<AnyCancellable> = []
     
+    var onChangedMovies: DoneHandler?
+    var didSelectItem: DoneHandler?
+    var didSelectMovie: ((Movie) -> Void)?
     
     let services: GenericMovieProvider
     
@@ -36,34 +53,48 @@ class SearchViewModel: SearchViewModelContract {
     }
     
     func addListener() {
+        
+        hiddenMovies = storageProvider.getHiddenMovies()
+        
         $searchText
             .debounce(for: .milliseconds(800), scheduler: RunLoop.main)
             .removeDuplicates()
             .map { val in
-                print("val")
-                print(val)
-                //if val.count < 3 { return nil }
-                //return val
                 if val.count > 2 {
                     self.searchMovies(title: val)
                 }
             }
-            .sink { val1 in
-                print("val1")
-                print(val1)
+            .sink { val in
+                
             }
             .store(in: &cancelables)
     }
     
     func searchMovies(title: String) {
-        services.searchMovie(with: title)
-            .sink { val in
-                
+        self.isLoading.send(true)
+        services
+            .searchMovie(with: title)
+            .sink { completion in
+                print(completion)
+                self.isLoading.send(false)
+                self.placeholder.send(PlaceholderStatus.defaultError())
             } receiveValue: { movies in
-                print("---------")
-                print(movies)
-            }.store(in: &cancelables)
-
-            
+                self.isLoading.send(false)
+                
+                let allIds = self.hiddenMovies.map { $0.id }.compactMap {  Int($0) }
+                let filteredMovies = movies.filter { !allIds.contains($0.id) }
+                
+                self.movies = filteredMovies
+                
+                if filteredMovies.isEmpty {
+                    self.placeholder.send(PlaceholderStatus(type: .empty, title: "No movie found! Try with different name."))
+                } else {
+                    self.placeholder.send(nil)
+                }
+                
+                self.onChangedMovies?()
+            }
+            .store(in: &cancelables)
     }
+    
 }

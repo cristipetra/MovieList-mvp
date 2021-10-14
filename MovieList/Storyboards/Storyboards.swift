@@ -22,4 +22,8 @@ extension UIStoryboard {
     func searchScreen() -> SearchViewController {
         UIStoryboard.main.instantiateViewController(withIdentifier: "search") as! SearchViewController
     }
+    
+    func detailScreen() -> MovieDetailViewController {
+        UIStoryboard.main.instantiateViewController(withIdentifier: "detail") as! MovieDetailViewController
+    }
 }

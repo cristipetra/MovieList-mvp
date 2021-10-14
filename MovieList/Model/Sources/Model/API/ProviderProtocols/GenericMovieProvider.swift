@@ -10,5 +10,5 @@ import Combine
 
 public protocol GenericMovieProvider {
     func getMovies() -> [Movie]
-    func searchMovie(with title: String) -> Future<[Movie], Error>
+    func searchMovie(with title: String) -> Future<[Movie], APIError>
 }

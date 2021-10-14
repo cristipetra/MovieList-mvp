@@ -9,6 +9,11 @@ import Foundation
 import Alamofire
 import Combine
 
+public enum APIError: Error {
+    case unknown
+    case description(String)
+}
+
 public class MovieServiceProvider: GenericMovieProvider {
     
     public init() { }
@@ -17,27 +22,24 @@ public class MovieServiceProvider: GenericMovieProvider {
         return []
     }
     
-    public func searchMovie(with title: String) -> Future<[Movie], Error> {
-                
-        let r1 = Session.default.request(MovieServiceRouter.search("fda"))
-        
-        let router = MovieServiceRouter.search("forest")
-        print(router)
-        
-        return Future<[Movie], Error> { promise in
-        
-        AF.request(router)
-            .responseDecodable(of: GetClientsResponse.self) { result in
-                print(result)
+    public func searchMovie(with title: String) -> Future<[Movie], APIError> {
+        let router = MovieServiceRouter.search(title)
+        return Future<[Movie], APIError> { promise in
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+//                return promise(.failure(.unknown))
+//            }
             
-                guard let resp = result.value else { return }
-            
-                promise(.success(resp.results))
-            }
-        
+            AF.request(router)
+                .responseDecodable(of: GetClientsResponse.self) { result in
+                    print(result)
+                    switch result.result {
+                    case .failure(let error):
+                        return promise(.failure(.description(error.localizedDescription)))
+                    case .success(let clientsResponse):
+                        return promise(.success(clientsResponse.results))
+                    }
+                }
         }
-        
-        //return []
     }
     
 }
