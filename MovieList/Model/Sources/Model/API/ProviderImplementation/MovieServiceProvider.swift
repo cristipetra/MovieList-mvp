@@ -31,7 +31,7 @@ public class MovieServiceProvider: GenericMovieProvider {
             
             AF.request(router)
                 .responseDecodable(of: GetClientsResponse.self) { result in
-                    print(result)
+                    //print(result)
                     switch result.result {
                     case .failure(let error):
                         return promise(.failure(.description(error.localizedDescription)))

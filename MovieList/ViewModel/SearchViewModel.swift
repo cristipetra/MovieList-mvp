@@ -13,17 +13,17 @@ protocol SearchViewModelContract {
     var title: String { get }
     var movies: [Movie] { set get }
     
-    func didSearchBarChanged(text: String)
-    
     var onChangedMovies: DoneHandler? { set get }
-    var didSelectItem: DoneHandler? { set get }
     var didSelectMovie: ((Movie) -> Void)? { set get }
     
     var isLoading: PassthroughSubject<Bool, Never> { set get }
     var placeholder: CurrentValueSubject<PlaceholderStatus?, Never> { set get }
+    
+    func didSearchBarChanged(text: String)
 }
 
 class SearchViewModel: SearchViewModelContract {
+    
     var title: String { return "Search" }
         
     @Published var movies: [Movie] = []
@@ -38,7 +38,6 @@ class SearchViewModel: SearchViewModelContract {
     private var cancelables: Set<AnyCancellable> = []
     
     var onChangedMovies: DoneHandler?
-    var didSelectItem: DoneHandler?
     var didSelectMovie: ((Movie) -> Void)?
     
     let services: GenericMovieProvider
@@ -52,16 +51,14 @@ class SearchViewModel: SearchViewModelContract {
         hiddenMovies = storageProvider.getHiddenMovies()
         
         $searchText
-            .debounce(for: .milliseconds(800), scheduler: RunLoop.main)
+            .debounce(for: .milliseconds(800), scheduler: DispatchQueue.main)
             .removeDuplicates()
             .map { val in
                 if val.count > 2 {
                     self.searchMovies(title: val)
                 }
             }
-            .sink { val in
-                
-            }
+            .sink { val in }
             .store(in: &cancelables)
     }
     

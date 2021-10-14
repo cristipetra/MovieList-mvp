@@ -36,7 +36,7 @@ class SearchViewController: BaseViewController {
         self.viewModel.onChangedMovies = {
             self.tableView.reloadData()
         }
-        
+                
         viewModel.isLoading
             .sink { isLoading in
                 if isLoading {
