@@ -34,8 +34,9 @@ extension StorageProvider {
             print("Failed to save movie: \(error)")
         }
     }
-    
-    func saveMovie(movie: Movie, hideFromFutureSearch: Bool = false) {
+        
+    func saveMovie(movie: Movie, hideFromFutureSearch: Bool = false, completion: (() -> Void)) {
+        
         let movieCore = MovieCoreData(context: persistentContainer.viewContext)
         movieCore.originalTitle = movie.originalTitle
         movieCore.id = Int64(movie.id)
@@ -46,17 +47,29 @@ extension StorageProvider {
         
         do {
             try persistentContainer.viewContext.save()
+            completion()
         } catch {
             print("Failed to save movie: \(error)")
         }
-    }
-    
-    func hideMovieFromSearch(movie: Movie) {
+        
         
     }
 }
 
 extension StorageProvider {
+    func getFavoritesMovies(completion: @escaping ([MovieCoreData]) -> Void) -> Void {
+        let fetchRequest: NSFetchRequest<MovieCoreData> = MovieCoreData.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "isHidden == false")
+        do {
+            let items = try persistentContainer.viewContext.fetch(fetchRequest)
+            completion(items)
+        } catch {
+            print("failed to fetch movies")
+            completion([])
+        }
+    }
+    
+    
     func getFavoritesMovies() -> [MovieCoreData] {
         let fetchRequest: NSFetchRequest<MovieCoreData> = MovieCoreData.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "isHidden == false")
@@ -76,6 +89,18 @@ extension StorageProvider {
         } catch {
             print("failed to fetch movies")
             return []
+        }
+    }
+    
+    func getHiddenMovies(completion: (([MovieCoreData]) -> Void)) -> Void {
+        let fetchRequest: NSFetchRequest<MovieCoreData> = MovieCoreData.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "isHidden == true")
+        do {
+            let items = try persistentContainer.viewContext.fetch(fetchRequest)
+            completion(items)
+        } catch {
+            print("failed to fetch movies")
+            completion([])
         }
     }
 }

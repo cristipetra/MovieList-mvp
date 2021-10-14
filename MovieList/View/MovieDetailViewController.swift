@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 class MovieDetailViewController: BaseViewController {
 
@@ -16,9 +17,20 @@ class MovieDetailViewController: BaseViewController {
     @IBOutlet weak var lblRating: UILabel!
     
     var viewModel: MovieDetailViewModelContract!
+    private var cancellables: Set<AnyCancellable> = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        viewModel.onMessage =  { message in
+            self.showAlert(withTitle: message, withMessage: "")
+        }
+        
+        viewModel.isEnabledAdd
+            .sink { isEnabled in
+                self.btnAdd.isEnabled = isEnabled
+            }
+            .store(in: &cancellables)
     }
     
     override func viewWillAppear(_ animated: Bool) {

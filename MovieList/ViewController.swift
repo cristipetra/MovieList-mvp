@@ -18,7 +18,6 @@ class ViewController: UIViewController {
     }
 
     override func viewDidAppear(_ animated: Bool) {
-        services.searchMovie(with: "forest")
     }
 
 }
